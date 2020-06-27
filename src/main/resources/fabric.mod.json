@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "lvmnt",
+  "version": "${version}",
+
+  "name": "Sky Breezes",
+  "description": "A mod that adds a dimension with small islands in the sky",
+  "authors": [
+    "Levoment"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0",
+  "icon": "assets/lvmnt/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.levoment.skybreezes.SkyBreezes"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
