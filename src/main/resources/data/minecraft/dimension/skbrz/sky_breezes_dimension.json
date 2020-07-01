@@ -1,0 +1,32 @@
+{
+  "type": "skbrz:sky_breezes_dimension_type",
+  "generator": {
+    "type": "skbrz:sky_breezes_chunk_generator",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "seed": 2,
+      "biomes": [
+        {
+          "biome": "skbrz:sky_breezes_default_biome",
+          "parameters": {
+            "altitude":  256.0,
+            "weirdness": 0.1,
+            "offset": 0.0,
+            "temperature": 0.8,
+            "humidity": 0.8
+          }
+        },
+        {
+          "biome": "skbrz:sky_breezes_cold_biome",
+          "parameters": {
+            "altitude":  256.0,
+            "weirdness": 0.95,
+            "offset": 1.0,
+            "temperature": 0.0,
+            "humidity": 0.1
+          }
+        }
+      ]
+    }
+  }
+}

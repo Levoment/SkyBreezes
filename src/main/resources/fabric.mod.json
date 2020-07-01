@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "lvmnt",
+  "id": "skbrz",
   "version": "${version}",
 
   "name": "Sky Breezes",
@@ -14,7 +14,7 @@
   },
 
   "license": "CC0",
-  "icon": "assets/lvmnt/icon.png",
+  "icon": "assets/skbrz/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -22,6 +22,9 @@
       "com.github.levoment.skybreezes.SkyBreezes"
     ]
   },
+  "mixins": [
+    "skbrz.mixins.json"
+  ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
