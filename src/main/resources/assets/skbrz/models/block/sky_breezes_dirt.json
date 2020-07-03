@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "block/dirt",
+    "all": "skbrz:block/sky_breezes_dirt_top"
+  }
+}

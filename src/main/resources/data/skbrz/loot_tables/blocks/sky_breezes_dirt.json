@@ -1,0 +1,15 @@
+{
+  "type": "skbrz:sky_breezes_dirt",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "skbrz:sky_breezes_dirt"
+        }
+      ]
+    }
+  ]
+}
+

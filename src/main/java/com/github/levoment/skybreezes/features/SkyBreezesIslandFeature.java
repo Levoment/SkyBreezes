@@ -72,16 +72,6 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
                 ((ChestBlockEntity)chestBlockEntity).setStack(4, new ItemStack(Items.BONE_MEAL, 32));
                 // Place another sapling in case the tree doesn't drop any saplings
                 ((ChestBlockEntity)chestBlockEntity).setStack(5, new ItemStack(Items.OAK_SAPLING));
-                // Place sugar cane
-                ((ChestBlockEntity)chestBlockEntity).setStack(6, new ItemStack(Items.SUGAR_CANE));
-                // Place kelp
-                ((ChestBlockEntity)chestBlockEntity).setStack(7, new ItemStack(Items.KELP));
-                // Place bamboo
-                ((ChestBlockEntity)chestBlockEntity).setStack(8, new ItemStack(Items.BAMBOO));
-                // Place Watermelon
-                ((ChestBlockEntity)chestBlockEntity).setStack(9, new ItemStack(Items.MELON_SEEDS));
-                // Place Pumpkin
-                ((ChestBlockEntity)chestBlockEntity).setStack(10, new ItemStack(Items.PUMPKIN_SEEDS));
             }
 
             // Spawn an End Portal nearby
@@ -100,43 +90,6 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
             world.setBlockState(new BlockPos(startX + 48, 6, startZ + 52), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH), 3);
             world.setBlockState(new BlockPos(startX + 49, 6, startZ + 52), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH), 3);
             world.setBlockState(new BlockPos(startX + 50, 6, startZ + 52), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH), 3);
-
-            // Spawn a nether portal nearby
-            world.setBlockState(new BlockPos(startX + 8, 40, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 9, 40, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 40, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 11, 40, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-            world.setBlockState(new BlockPos(startX + 9, 40, startZ - 47), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 40, startZ - 47), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-            world.setBlockState(new BlockPos(startX + 9, 40, startZ - 49), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 40, startZ - 49), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-            world.setBlockState(new BlockPos(startX + 8, 41, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 8, 42, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 8, 43, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 8, 44, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-
-            world.setBlockState(new BlockPos(startX + 11, 41, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 11, 42, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 11, 43, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 11, 44, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-            world.setBlockState(new BlockPos(startX + 8, 45, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 9, 45, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 45, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 11, 45, startZ - 48), Blocks.OBSIDIAN.getDefaultState(), 3);
-
-            world.setBlockState(new BlockPos(startX + 9, 41, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 41, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 9, 42, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 42, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 9, 43, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 43, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 9, 44, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(startX + 10, 44, startZ - 48), Blocks.NETHER_PORTAL.getDefaultState(), 3);
 
             // Make an island with cactus on it
             int desertIslandStartX = startX - 48;
@@ -181,6 +134,28 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
             world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 73, startZ + 8), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
             world.setBlockState(new BlockPos(islandWithSaplingsStartX + 8, 73, startZ + 9), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
             world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 73, startZ + 9), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+
+            // Place a chest
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 2, 73, startZ + 4), Blocks.CHEST.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(Properties.CHEST_TYPE, ChestType.SINGLE), 3);
+            // Try to get the chest entity
+            BlockEntity chestWithSeedsAndPlants = world.getBlockEntity(new BlockPos(islandWithSaplingsStartX + 2, 73, startZ + 4));
+            // If the the entity is not null and is of type ChestBlockEntity
+            if (chestWithSeedsAndPlants != null) {
+                // Place sugar cane
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(1, new ItemStack(Items.SUGAR_CANE));
+                // Place kelp
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(2, new ItemStack(Items.KELP));
+                // Place Watermelon
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(6, new ItemStack(Items.MELON_SEEDS));
+                // Place Pumpkin
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(7, new ItemStack(Items.PUMPKIN_SEEDS));
+                // Place one sapling of each tree in case they don't drop any saplings
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(9, new ItemStack(Items.ACACIA_SAPLING));
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(12, new ItemStack(Items.BIRCH_SAPLING));
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(13, new ItemStack(Items.SPRUCE_SAPLING));
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(19, new ItemStack(Items.DARK_OAK_SAPLING));
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(26, new ItemStack(Items.JUNGLE_SAPLING));
+            }
         }
 
         return true;

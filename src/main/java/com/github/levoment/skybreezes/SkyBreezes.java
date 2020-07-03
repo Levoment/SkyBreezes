@@ -2,6 +2,7 @@ package com.github.levoment.skybreezes;
 
 import com.github.levoment.skybreezes.biomes.SkyBreezesColdBiome;
 import com.github.levoment.skybreezes.biomes.SkyBreezesDefaultBiome;
+import com.github.levoment.skybreezes.blocks.SkyBreezesDirt;
 import com.github.levoment.skybreezes.chunkgenerators.SkyBreezesChunkGenerator;
 import com.github.levoment.skybreezes.features.SkyBreezesIslandFeature;
 import com.mojang.brigadier.context.CommandContext;
@@ -10,7 +11,11 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.pattern.BlockPattern;
+import net.minecraft.client.world.GeneratorType;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -28,7 +33,7 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 public class SkyBreezes implements ModInitializer {
     private static String MOD_ID = "skbrz";
-	private static RegistryKey<World> skyBreezesDimensionRegistryKey;
+	public static RegistryKey<World> skyBreezesDimensionRegistryKey;
 	// Register the default biome
 	public static final Biome SKY_BREEZES_DEFAULT_BIOME = Registry.register(Registry.BIOME, new Identifier(MOD_ID, "sky_breezes_default_biome"), new SkyBreezesDefaultBiome());
 	// Register the cold biome
@@ -40,6 +45,7 @@ public class SkyBreezes implements ModInitializer {
 			new SkyBreezesIslandFeature(DefaultFeatureConfig.CODEC)
 	);
 
+	public static final SkyBreezesDirt SKY_BREEZES_DIRT = new SkyBreezesDirt();
 
 	@Override
 	public void onInitialize() {
@@ -60,6 +66,12 @@ public class SkyBreezes implements ModInitializer {
 
 		// Modify the loot tables
 		SkyBreezesLootTableModifier.ModifyLootTables();
+
+		// Register the Sky Breezes Dirt block
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "sky_breezes_dirt"), SKY_BREEZES_DIRT);
+		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "sky_breezes_dirt"), new BlockItem(SKY_BREEZES_DIRT, new Item.Settings().group(ItemGroup.MISC)));
+
+
 	}
 
 	private int executeTeleportToSkyBreezesDimensionCommand(CommandContext<ServerCommandSource> objectCommandContext) throws CommandSyntaxException {
@@ -80,6 +92,7 @@ public class SkyBreezes implements ModInitializer {
 	}
 
 	private static BlockPattern.TeleportTarget placeEntityInSkyBreezesDimension(Entity teleported, ServerWorld destination, Direction portalDir, double horizontalOffset, double verticalOffset) {
-		return new BlockPattern.TeleportTarget(new Vec3d(5.5, 81, 5.5), Vec3d.ZERO, 0);
+		return new BlockPattern.TeleportTarget(new Vec3d(5.5, 76, 5.5), Vec3d.ZERO, 0);
 	}
+
 }
