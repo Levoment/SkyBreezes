@@ -23,8 +23,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// all levelproperties in dimensions are mutable
-	modImplementation "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
-	include "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
+	//modImplementation "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
+	//include "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
 
 	//Remove the experimental errors, yay
 	modImplementation 'com.github.Linguardium:ExperimentAway:1.0.0'

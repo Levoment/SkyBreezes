@@ -1,6 +1,7 @@
 package com.github.levoment.skybreezes.features;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
@@ -36,30 +37,29 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
             // Get the start and end positions of the chunk
             int startX = chunk.getPos().getStartX();
             int startZ = chunk.getPos().getStartZ();
-            // Set the base blocks of the island
-            chunk.setBlockState(new BlockPos(chunk.getPos().getStartX() + 7, 69, chunk.getPos().getStartX() + 6), Blocks.BEDROCK.getDefaultState(), false);
-            chunk.setBlockState(new BlockPos(chunk.getPos().getStartX() + 8, 69, chunk.getPos().getStartX() + 7), Blocks.BEDROCK.getDefaultState(), false);
-            chunk.setBlockState(new BlockPos(chunk.getPos().getStartX() + 6, 69, chunk.getPos().getStartX() + 7), Blocks.BEDROCK.getDefaultState(), false);
-            chunk.setBlockState(new BlockPos(chunk.getPos().getStartX() + 7, 69, chunk.getPos().getStartX() + 8), Blocks.BEDROCK.getDefaultState(), false);
+
             // Build the spawn island
-            for (int x = 0; x <= 16; x++) {
-                for (int z = 0; z <= 16; z++) {
-                    for (int y = 0; y <= 2; y++) {
-                        if (y == 2) {
-                            chunk.setBlockState(new BlockPos(startX + x,  70 + y, startZ + z), Blocks.GRASS_BLOCK.getDefaultState(), false);
+            for (int y = 0; y < 8; y++) {
+                for (int x = 0 + y; x < 17 - y - (y > 0 ? 1 : 0) ; x++) {
+                    for (int z = 0 + y; z < 17 - y - (y > 0 ? 1 : 0) ; z++) {
+                        if (y == 0) {
+                            chunk.setBlockState(new BlockPos((startX + x), 70 - y, (startZ + z)), Blocks.GRASS_BLOCK.getDefaultState(), false);
+                        } else if (y == 7) {
+                            chunk.setBlockState(new BlockPos((startX + x), 70 - y, (startZ + z)), Blocks.BEDROCK.getDefaultState(), false);
                         } else {
-                            chunk.setBlockState(new BlockPos(startX + x, 70 + y, startZ + z), Blocks.DIRT.getDefaultState(), false);
+                            chunk.setBlockState(new BlockPos((startX + x), 70 - y, (startZ + z)), Blocks.DIRT.getDefaultState(), false);
                         }
+
                     }
                 }
             }
 
             // Plant a tree
-            chunk.setBlockState(new BlockPos(startX + 8, 73, startZ + 8), Blocks.OAK_SAPLING.getDefaultState(), false);
+            chunk.setBlockState(new BlockPos(startX + 8, 71, startZ + 8), Blocks.OAK_SAPLING.getDefaultState(), false);
             // Place a chest
-            world.setBlockState(new BlockPos(startX + 2, 73, startZ + 8), Blocks.CHEST.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(Properties.CHEST_TYPE, ChestType.SINGLE), 3);
+            world.setBlockState(new BlockPos(startX + 2, 71, startZ + 8), Blocks.CHEST.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(Properties.CHEST_TYPE, ChestType.SINGLE), 3);
             // Try to get the chest entity
-            BlockEntity chestBlockEntity = world.getBlockEntity(new BlockPos(startX + 2, 73, startZ + 8));
+            BlockEntity chestBlockEntity = world.getBlockEntity(new BlockPos(startX + 2, 71, startZ + 8));
             // If the the entity is not null and is of type ChestBlockEntity
             if (chestBlockEntity != null) {
                 // Place 2 water buckets in the chest
@@ -105,40 +105,41 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
 
             // Make an island with different saplings on it
             int islandWithSaplingsStartX = startX - 48;
-            for (int x = 0; x <= 16; x++) {
-                for (int z = 0; z <= 16; z++) {
-                    for (int y = 0; y <= 1; y++) {
-                        if (y == 1) {
-                            world.setBlockState(new BlockPos(islandWithSaplingsStartX + x, 71 + y, startZ + z), Blocks.GRASS_BLOCK.getDefaultState(), 0);
+            for (int y = 0; y < 8; y++) {
+                for (int x = 0 + y; x < 17 - y - (y > 0 ? 1 : 0) ; x++) {
+                    for (int z = 0 + y; z < 17 - y - (y > 0 ? 1 : 0) ; z++) {
+                        if (y == 0) {
+                            world.setBlockState(new BlockPos((islandWithSaplingsStartX + x), 70 - y, (startZ + z)), Blocks.GRASS_BLOCK.getDefaultState(), 0);
                         } else {
-                            world.setBlockState(new BlockPos(islandWithSaplingsStartX + x, 71 + y, startZ + z), Blocks.DIRT.getDefaultState(), 0);
+                            world.setBlockState(new BlockPos((islandWithSaplingsStartX + x), 70 - y, (startZ + z)), Blocks.DIRT.getDefaultState(), 0);
                         }
+
                     }
                 }
             }
             // Plant an acacia tree
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 73, startZ), Blocks.ACACIA_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 71, startZ), Blocks.ACACIA_SAPLING.getDefaultState(), 3);
             // Plant a birch tree
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 16, 73, startZ), Blocks.BIRCH_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 16, 71, startZ), Blocks.BIRCH_SAPLING.getDefaultState(), 3);
             // Plant a spruce tree
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 16, 73, startZ + 16), Blocks.SPRUCE_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 16, 71, startZ + 16), Blocks.SPRUCE_SAPLING.getDefaultState(), 3);
 
             // Plant a Dark oak tree
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 73, startZ + 16), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 73, startZ + 15), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 1, 73, startZ + 16), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 1, 73, startZ + 15), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 71, startZ + 16), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX, 71, startZ + 15), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 1, 71, startZ + 16), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 1, 71, startZ + 15), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
 
             // Plant a jungle tree
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 8, 73, startZ + 8), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 73, startZ + 8), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 8, 73, startZ + 9), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 73, startZ + 9), Blocks.DARK_OAK_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 8, 71, startZ + 8), Blocks.JUNGLE_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 71, startZ + 8), Blocks.JUNGLE_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 8, 71, startZ + 9), Blocks.JUNGLE_SAPLING.getDefaultState(), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 9, 71, startZ + 9), Blocks.JUNGLE_SAPLING.getDefaultState(), 3);
 
             // Place a chest
-            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 2, 73, startZ + 4), Blocks.CHEST.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(Properties.CHEST_TYPE, ChestType.SINGLE), 3);
+            world.setBlockState(new BlockPos(islandWithSaplingsStartX + 2, 71, startZ + 4), Blocks.CHEST.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(Properties.CHEST_TYPE, ChestType.SINGLE), 3);
             // Try to get the chest entity
-            BlockEntity chestWithSeedsAndPlants = world.getBlockEntity(new BlockPos(islandWithSaplingsStartX + 2, 73, startZ + 4));
+            BlockEntity chestWithSeedsAndPlants = world.getBlockEntity(new BlockPos(islandWithSaplingsStartX + 2, 71, startZ + 4));
             // If the the entity is not null and is of type ChestBlockEntity
             if (chestWithSeedsAndPlants != null) {
                 // Place sugar cane
@@ -149,12 +150,15 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(6, new ItemStack(Items.MELON_SEEDS));
                 // Place Pumpkin
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(7, new ItemStack(Items.PUMPKIN_SEEDS));
+                // Place cocoa beans
+                ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(8, new ItemStack(Items.COCOA_BEANS));
                 // Place one sapling of each tree in case they don't drop any saplings
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(9, new ItemStack(Items.ACACIA_SAPLING));
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(12, new ItemStack(Items.BIRCH_SAPLING));
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(13, new ItemStack(Items.SPRUCE_SAPLING));
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(19, new ItemStack(Items.DARK_OAK_SAPLING));
                 ((ChestBlockEntity)chestWithSeedsAndPlants).setStack(26, new ItemStack(Items.JUNGLE_SAPLING));
+
             }
         }
 

@@ -3,8 +3,7 @@
 ![Sky Breezes Icon](./src/main/resources/assets/skbrz/icon.png "SkyBreezes")
 
 ## Dependencies
-This mod uses two libraries. Each with their own License.
-- [DimensionMutability](https://github.com/Linguardium/DimensionMutability) - Used to allow the player to sleep in the Sky Breezes dimension. MIT License
+This mod uses a library which helps in removing the Experimental World Screen when creating and opening a world.
 - [ExperimentAway](https://github.com/Linguardium/ExperimentAway) - Used to remove the screen that shows a warning about the world using experimental unsupported settings. MIT License
 
 # How to
@@ -19,12 +18,14 @@ Alternatively you can use the command `/teleport_to_sky_breezes_dimension` and i
 
 # Screenshots
 
-![Sky_Breezes_Dirt Recipe](./Images/SpawnIsland.png)
+![Spawn Island](./Images/SpawnIsland.png)
 
-![Sky_Breezes_Dirt Recipe](./Images/IslandWithCactus.png)
+![Island with Cactus](./Images/IslandWithCactus.png)
 
-![Sky_Breezes_Dirt Recipe](./Images/IslandWithSaplings.png)
+![Island with Saplings](./Images/IslandWithSaplings.png)
+
+![Two Islands](./Images/TwoIslands.png)
 
 ## License
 
-This mod is available under the CC0 license. The dependencies: DimensionMutability and ExperimentAway use the MIT license.
+This mod is available under the CC0 license. The dependency: ExperimentAway is available under the MIT license.

@@ -4,7 +4,9 @@
   "package": "com.github.levoment.skybreezes.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SkyBreezesNetherPortalMixin"
+    "SkyBreezesNetherPortalMixin",
+    "SkyBreezesRainFixMixin",
+    "SleepMixin"
   ],
   "client": [
 

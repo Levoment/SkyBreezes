@@ -2,15 +2,17 @@ package com.github.levoment.skybreezes.biomes;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.world.MutableWorldProperties;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.level.LevelProperties;
 
 public class SkyBreezesDefaultBiome extends Biome {
 
     public SkyBreezesDefaultBiome() {
-        super(new Biome.Settings().configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.DIRT_CONFIG).precipitation(Precipitation.RAIN).category(Category.PLAINS).depth(0.24F).scale(0.2F).temperature(0.8F).downfall(1.0F).effects((new BiomeEffects.Builder())
+        super(new Biome.Settings().configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.DIRT_CONFIG).precipitation(Precipitation.RAIN).category(Category.PLAINS).depth(0.24F).scale(0.2F).temperature(2.0F).downfall(1.0f).effects((new BiomeEffects.Builder())
                 .waterColor(4159204)
                 .waterFogColor(329011)
                 .fogColor(12638463).build()).parent((String) null));
@@ -41,7 +43,9 @@ public class SkyBreezesDefaultBiome extends Biome {
         this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SKELETON, 100, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.CREEPER, 100, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4));
-        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.ENDERMAN, 50, 1, 4));
+        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.ENDERMAN, 30, 1, 4));
         this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.WITCH, 5, 1, 1));
+
     }
+
 }

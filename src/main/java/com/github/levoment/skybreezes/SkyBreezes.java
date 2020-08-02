@@ -11,7 +11,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.pattern.BlockPattern;
-import net.minecraft.client.world.GeneratorType;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -92,7 +91,7 @@ public class SkyBreezes implements ModInitializer {
 	}
 
 	private static BlockPattern.TeleportTarget placeEntityInSkyBreezesDimension(Entity teleported, ServerWorld destination, Direction portalDir, double horizontalOffset, double verticalOffset) {
-		return new BlockPattern.TeleportTarget(new Vec3d(5.5, 76, 5.5), Vec3d.ZERO, 0);
+		return new BlockPattern.TeleportTarget(new Vec3d(5.5, 73, 5.5), Vec3d.ZERO, 0);
 	}
 
 }
