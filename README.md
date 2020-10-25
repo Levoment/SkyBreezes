@@ -51,7 +51,8 @@ Gathering Materials section.
 In the cold biome of the Sky Breezes dimension, it snows if the weather status is raining.
 This biome occupies only 1 chunk, but because the biome generation is not exactly squared,
 parts of a chunk may not be cold. The Cold Biome of the Sky Breezes dimension can be found every 8 chunks 
-(or 128 blocks) in a **diagonal** on any directon.
+(or 128 blocks) in a **diagonal** on any direction parting from any of the 4 blocks 
+in the corners of a spawn chunk.
 
 # Screenshots
 
