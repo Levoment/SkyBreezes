@@ -69,4 +69,4 @@ This mod is available under the CC0 license.
 
 The dependency: [DimensionMutability](https://github.com/Linguardium/DimensionMutability/tree/90695d166f9abc1672223219653ce3659e901e3d) is available under the [MIT license](https://github.com/Linguardium/DimensionMutability/blob/90695d166f9abc1672223219653ce3659e901e3d/LICENSE).
 
-The dependency [Cardinal Components API](https://github.com/OnyxStudios/Cardinal-Components-API) is available under the [MIT License](https://github.com/OnyxStudios/Cardinal-Components-API/blob/master/LICENSE.md).
+The dependency: [Cardinal Components API](https://github.com/OnyxStudios/Cardinal-Components-API) is available under the [MIT License](https://github.com/OnyxStudios/Cardinal-Components-API/blob/master/LICENSE.md).
