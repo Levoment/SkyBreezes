@@ -1,0 +1,23 @@
+{
+  "type": "default",
+  "config": {
+    "top_material": {
+      "Name": "air",
+      "Properties": {
+        "state": "default"
+      }
+    },
+    "under_material": {
+      "Name": "air",
+      "Properties": {
+        "state": "default"
+      }
+    },
+    "underwater_material": {
+      "Name": "air",
+      "Properties": {
+        "state": "default"
+      }
+    }
+  }
+}

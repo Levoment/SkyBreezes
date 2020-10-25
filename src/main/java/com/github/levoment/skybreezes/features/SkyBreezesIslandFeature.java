@@ -1,6 +1,7 @@
 package com.github.levoment.skybreezes.features;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -12,6 +13,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
@@ -27,10 +29,9 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
         super(configCodec);
     }
 
-
     @Override
-    public boolean generate(ServerWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
-        Chunk chunk = world.getChunk(pos);
+    public boolean generate(StructureWorldAccess world, ChunkGenerator chunkGenerator, Random random, BlockPos blockPos, DefaultFeatureConfig featureConfig) {
+        Chunk chunk = world.getChunk(blockPos);
 
         // If the chunk can be divided by 1024
         if ((chunk.getPos().getStartX() % 1024 == 0) && (chunk.getPos().getStartZ() % 1024 == 0)) {
@@ -49,7 +50,6 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
                         } else {
                             chunk.setBlockState(new BlockPos((startX + x), 70 - y, (startZ + z)), Blocks.DIRT.getDefaultState(), false);
                         }
-
                     }
                 }
             }
@@ -75,6 +75,8 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
             }
 
             // Spawn an End Portal nearby
+            Block theBlock = Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH).getBlock();
+
             world.setBlockState(new BlockPos(startX + 48, 6, startZ + 48), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH), 3);
             world.setBlockState(new BlockPos(startX + 49, 6, startZ + 48), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH), 3);
             world.setBlockState(new BlockPos(startX + 50, 6, startZ + 48), Blocks.END_PORTAL_FRAME.getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.SOUTH), 3);
@@ -164,6 +166,4 @@ public class SkyBreezesIslandFeature extends Feature<DefaultFeatureConfig> {
 
         return true;
     }
-
-
 }

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "skbrz:sky_breezes_chunk_generator",
+    "biome_source": {
+      "type": "skbrz:sky_breezes_biome_source",
+      "biomes": [
+        "skbrz:skybreezes_default_biome",
+        "skbrz:skybreezes_cold_biome"
+      ]
+    },
+    "structures": {
+      "structures": {
+      }
+    }
+  }
+}

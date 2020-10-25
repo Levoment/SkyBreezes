@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.4-SNAPSHOT'
+	id 'fabric-loom' version '0.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -12,6 +12,10 @@ group = project.maven_group
 repositories {
 
 	maven { url 'https://jitpack.io' }
+	maven {
+		name = "Ladysnake Libs"
+		url = 'https://dl.bintray.com/ladysnake/libs'
+	}
 }
 dependencies {
 	//to change the versions see the gradle.properties file
@@ -23,12 +27,35 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// all levelproperties in dimensions are mutable
-	//modImplementation "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
-	//include "com.github.Linguardium:DimensionMutability:${project.dimute_version}"
+	//modImplementation "com.github.Levoment:DimensionMutability:${project.dimute_version}"
+	//include "com.github.Levoment:DimensionMutability:${project.dimute_version}"
+
+	// Dimension Mutability for 1.16.3
+	modImplementation ('com.github.Linguardium:DimensionMutability:90695d166f9abc1672223219653ce3659e901e3d') {
+		exclude module: "net.fabricmc:fabric-loader:${project.loader_version}"
+	}
+	include ('com.github.Linguardium:DimensionMutability:90695d166f9abc1672223219653ce3659e901e3d') {
+		exclude module: "net.fabricmc:fabric-loader:${project.loader_version}"
+	}
 
 	//Remove the experimental errors, yay
-	modImplementation 'com.github.Linguardium:ExperimentAway:1.0.0'
-	include 'com.github.Linguardium:ExperimentAway:1.0.0'
+	//modImplementation 'com.github.Linguardium:ExperimentAway:1.0.1'
+	//include 'com.github.Linguardium:ExperimentAway:1.0.1'
+
+//	modImplementation ('com.github.Levoment:ExperimentAway:6885b00dec3685388e04fd3aea6f34b9ab972e6e') {
+//		exclude module: "net.fabricmc:fabric-loader:${project.loader_version}"
+//	}
+//	include ('com.github.Levoment:ExperimentAway:6885b00dec3685388e04fd3aea6f34b9ab972e6e') {
+//		exclude module: "net.fabricmc:fabric-loader:${project.loader_version}"
+//	}
+
+	// Cardinal Components
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-world:${project.cardinal_components_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-world:${project.cardinal_components_version}"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.

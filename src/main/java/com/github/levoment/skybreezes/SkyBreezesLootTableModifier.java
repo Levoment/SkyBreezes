@@ -11,6 +11,8 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 
 public class SkyBreezesLootTableModifier {
 
@@ -28,7 +30,7 @@ public class SkyBreezesLootTableModifier {
 
             // Location predicate to apply the loot change only on biomes from the dimension
             LocationPredicate.Builder defaultBiomeLocationPredicate = LocationPredicate.Builder.create();
-            defaultBiomeLocationPredicate.biome(SkyBreezes.SKY_BREEZES_DEFAULT_BIOME);
+            defaultBiomeLocationPredicate.biome(RegistryKey.of(Registry.BIOME_KEY, new Identifier(SkyBreezes.MOD_ID, "skybreezes_default_biome")));
             LootCondition defaultBiomeLootCondition = LocationCheckLootCondition.builder(defaultBiomeLocationPredicate).build();
 
             if (COBBLESTONE_LOOT_TABLE_ID.equals(id)) {

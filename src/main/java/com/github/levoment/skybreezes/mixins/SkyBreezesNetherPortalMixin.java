@@ -2,26 +2,22 @@ package com.github.levoment.skybreezes.mixins;
 
 import com.github.levoment.skybreezes.SkyBreezes;
 import net.minecraft.block.AbstractFireBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.NetherPortalBlock;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractFireBlock.class)
 public class SkyBreezesNetherPortalMixin {
-    @Inject(method = "onBlockAdded", at = @At("HEAD"))
-    public void onBlockAddedCallback (BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify, CallbackInfo info) {
-        if (!oldState.isOf(state.getBlock())) {
-            // Check if the dimension is the Sky Breezes dimension or if a nether portal can be created at the pos
-            if (world.getRegistryKey() != SkyBreezes.skyBreezesDimensionRegistryKey || !NetherPortalBlock.createPortalAt(world, pos)) {
-                if (!state.canPlaceAt(world, pos)) {
-                    world.removeBlock(pos, false);
-                }
-            }
+    @Inject(method = "method_30366", at = @At("HEAD"), cancellable = true)
+    private static void isSkyBreezesDimension(World world, CallbackInfoReturnable<Boolean> callbackInfoReturnable) {
+        if (world.getRegistryKey() == SkyBreezes.skyBreezesDimensionRegistryKey) {
+            callbackInfoReturnable.setReturnValue(true);
         }
     }
+//    @Overwrite
+//    public static boolean method_30366(World world) {
+//        return world.getRegistryKey() == World.OVERWORLD || world.getRegistryKey() == World.NETHER || world.getRegistryKey() == SkyBreezes.skyBreezesDimensionRegistryKey;
+//    }
 }

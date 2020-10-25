@@ -13,12 +13,12 @@ public class SleepMixin {
     ServerWorldProperties properties;
 
     @Overwrite
-    public void method_29034(long l) {
-        properties.method_29034(l);
+    public void setTime(long l) {
+        properties.setTime(l);
     }
     @Overwrite
-    public void method_29035(long l) {
-        properties.method_29035(l);
+    public void setTimeOfDay(long l) {
+        properties.setTimeOfDay(l);
     }
 
     @Overwrite

@@ -11,24 +11,22 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.StructuresConfig;
-import net.minecraft.world.gen.feature.FeatureConfig;
 
 public class SkyBreezesChunkGenerator extends ChunkGenerator {
 
     public static final Codec<SkyBreezesChunkGenerator> CODEC = RecordCodecBuilder.create((instance) ->
             instance.group(
-                    BiomeSource.field_24713.fieldOf("biome_source")
-                            .forGetter((generator) -> generator.biomeSource)
-            )
-                    .apply(instance, instance.stable(SkyBreezesChunkGenerator::new))
+                    BiomeSource.CODEC.fieldOf("biome_source").forGetter((surfaceChunkGenerator) -> surfaceChunkGenerator.biomeSource),
+                    StructuresConfig.CODEC.fieldOf("structures").forGetter((ChunkGenerator::getStructuresConfig))).
+                    apply(instance, instance.stable(SkyBreezesChunkGenerator::new))
     );
 
-    public SkyBreezesChunkGenerator(BiomeSource biomeSource) {
-        super(biomeSource, new StructuresConfig(false));
+    public SkyBreezesChunkGenerator(BiomeSource biomeSource, StructuresConfig structuresConfig) {
+        super(biomeSource, structuresConfig);
     }
 
     @Override
-    protected Codec<? extends ChunkGenerator> method_28506() {
+    protected Codec<? extends ChunkGenerator> getCodec() {
         return CODEC;
     }
 
@@ -56,6 +54,4 @@ public class SkyBreezesChunkGenerator extends ChunkGenerator {
     public BlockView getColumnSample(int x, int z) {
         return null;
     }
-
-
 }

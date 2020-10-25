@@ -5,8 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "SkyBreezesNetherPortalMixin",
-    "SkyBreezesRainFixMixin",
-    "SleepMixin"
+    "SkyBreezesEntityMixinForNetherPortal",
+    "SkyBreezesMixinForNetherTeleportation",
+    "SkyBreezesStableLifecycleMixin"
   ],
   "client": [
 

@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(UnmodifiableLevelProperties.class)
 public class SkyBreezesRainFixMixin {
@@ -49,6 +48,26 @@ public class SkyBreezesRainFixMixin {
     @Overwrite
     public int getThunderTime() {
         return properties.getThunderTime();
+    }
+
+    @Overwrite
+    public void setSpawnX(int spawnX) {
+        properties.setSpawnX(spawnX);
+    }
+
+    @Overwrite
+    public void setSpawnY(int spawnY) {
+        properties.setSpawnX(spawnY);
+    }
+
+    @Overwrite
+    public void setSpawnZ(int spawnZ) {
+        properties.setSpawnX(spawnZ);
+    }
+
+    @Overwrite
+    public void setSpawnAngle(float angle) {
+        properties.setSpawnAngle(angle);
     }
 
     @Inject(at = @At("HEAD"), method = "setThunderTime")

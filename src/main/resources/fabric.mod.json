@@ -1,4 +1,5 @@
 {
+
   "schemaVersion": 1,
   "id": "skbrz",
   "version": "${version}",
@@ -20,6 +21,12 @@
   "entrypoints": {
     "main": [
       "com.github.levoment.skybreezes.SkyBreezes"
+    ],
+    "cardinal-components-world": [
+      "com.github.levoment.skybreezes.components.SkyBreezesComponents"
+    ],
+    "cardinal-components-entity": [
+      "com.github.levoment.skybreezes.components.SkyBreezesComponents"
     ]
   },
   "mixins": [
@@ -33,5 +40,11 @@
   },
   "suggests": {
     "flamingo": "*"
+  },
+  "custom": {
+    "cardinal-components": [
+      "skbrz:spawn_component",
+      "skbrz:player_spawn_component"
+    ]
   }
 }
