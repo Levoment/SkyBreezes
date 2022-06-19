@@ -43,16 +43,16 @@ public class SkyBreezes implements ModInitializer {
         // Register the raw feature
         SKY_BREEZES_ISLAND_FEATURE = Registry.register(Registry.FEATURE, new Identifier(MOD_ID, "island_feature"), skyBreezesIslandFeature);
         // Configure the raw feature and store the configured result in a variable
-        ConfiguredFeature<?, ?> skyBreezesconfiguredIslandFeature = skyBreezesIslandFeature.configure(DefaultFeatureConfig.DEFAULT);
+        // ConfiguredFeature<?, ?> skyBreezesconfiguredIslandFeature = skyBreezesIslandFeature.configure(DefaultFeatureConfig.DEFAULT);
 
         // Register the configured feature in order to be able to use it in the biomes' jsons
-        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(MOD_ID, "island_feature"), skyBreezesconfiguredIslandFeature);
+        // Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(MOD_ID, "island_feature"), skyBreezesconfiguredIslandFeature);
         // Register the Sky Breezes dimension
-		skyBreezesDimensionRegistryKey = RegistryKey.of(Registry.DIMENSION, new Identifier(MOD_ID, "sky_breezes_dimension"));
+		skyBreezesDimensionRegistryKey = RegistryKey.of(Registry.WORLD_KEY, new Identifier(MOD_ID, "sky_breezes_dimension"));
         // Register the Sky Breezes BiomeSource
 		Registry.register(Registry.BIOME_SOURCE, new Identifier(MOD_ID, "sky_breezes_biome_source"), SkyBreezesBiomeSource.CODEC);
 		// Register the Sky Breezes ChunkGenerator
-		Registry.register(Registry.CHUNK_GENERATOR, new Identifier(MOD_ID, "sky_breezes_chunk_generator"), SkyBreezesChunkGenerator.CODEC);
+		// Registry.register(Registry.CHUNK_GENERATOR, new Identifier(MOD_ID, "sky_breezes_chunk_generator"), SkyBreezesChunkGenerator.CODEC);
 
 		// Register the command to teleport to the SkyBreezes dimension
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {

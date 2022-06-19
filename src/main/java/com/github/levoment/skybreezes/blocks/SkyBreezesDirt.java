@@ -1,21 +1,19 @@
 package com.github.levoment.skybreezes.blocks;
 
+
 import com.github.levoment.skybreezes.SkyBreezes;
 import com.github.levoment.skybreezes.components.SkyBreezesComponents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.World;
-import net.minecraft.world.level.UnmodifiableLevelProperties;
 
 import java.util.Map;
 import java.util.Objects;
@@ -23,11 +21,11 @@ import java.util.Objects;
 public class SkyBreezesDirt extends Block {
 
     public SkyBreezesDirt() {
-        super(FabricBlockSettings.of(Material.SOIL).breakByHand(true).hardness(0.5f).sounds(BlockSoundGroup.GRASS));
+        super(FabricBlockSettings.of(Material.SOIL).hardness(0.5f).sounds(BlockSoundGroup.GRASS));
     }
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, Entity entity) {
+    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         if (!world.isClient()) {
             ServerWorld destination = (ServerWorld)world;
             ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)entity;

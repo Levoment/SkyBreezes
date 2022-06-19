@@ -1,7 +1,7 @@
 package com.github.levoment.skybreezes.components;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 
 import java.util.Map;
@@ -48,7 +48,7 @@ public class PlayerSpawnPosComponent implements PlayerLastDimensionComponent {
         return this.lastVisitedSkyBreezes;
     }
 
-    @Override public void readFromNbt(CompoundTag tag) {
+    @Override public void readFromNbt(NbtCompound tag) {
         String playerUUID = tag.getString("skbrz_playerUUID");
         int[] spawnPositions = tag.getIntArray("SkyBreezesPortalPosition");
         Boolean lastVisitedSkyBreezes1 = tag.getBoolean("LastVisitedSkyBreezes");
@@ -56,7 +56,7 @@ public class PlayerSpawnPosComponent implements PlayerLastDimensionComponent {
         this.lastTeleportPosition = spawnPositions;
         this.lastVisitedSkyBreezes = lastVisitedSkyBreezes1;
     }
-    @Override public void writeToNbt(CompoundTag tag) {
+    @Override public void writeToNbt(NbtCompound tag) {
         tag.putIntArray("SkyBreezesPortalPosition", this.lastTeleportPosition);
         tag.putString("skbrz_playerUUID", this.playerUUID);
         tag.putBoolean("LastVisitedSkyBreezes", this.lastVisitedSkyBreezes);
