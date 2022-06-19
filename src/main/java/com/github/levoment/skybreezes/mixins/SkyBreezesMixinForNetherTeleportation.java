@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ServerPlayerEntity.class)
 public class SkyBreezesMixinForNetherTeleportation {
     @Inject(method = "moveToWorld(Lnet/minecraft/server/world/ServerWorld;)Lnet/minecraft/entity/Entity;", at = @At("HEAD"), cancellable = true)
-    public void moveToWorldCallback(ServerWorld serverWorld, CallbackInfoReturnable<Entity> callbackInfoReturnable) {
+    public void moveToWorldCallback(ServerWorld destination, CallbackInfoReturnable<Entity> callbackInfoReturnable) {
         if (!((Entity) (Object)this).world.isClient()) {
-            if (serverWorld.getRegistryKey() == World.OVERWORLD) {
+            if (destination.getRegistryKey() == World.OVERWORLD) {
                 // Check if the last dimension was the Sky Breezes dimension
                 if (SkyBreezesComponents.PLAYER_SPAWN_POS_COMPONENT_KEY.get(((Entity) (Object)this)).lastVisitedSkyBreezes()) {
                     // Last visited dimension was the Sky Breezes dimension

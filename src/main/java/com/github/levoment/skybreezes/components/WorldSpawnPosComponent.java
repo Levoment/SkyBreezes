@@ -1,6 +1,6 @@
 package com.github.levoment.skybreezes.components;
 
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import java.util.Map;
 import java.util.Set;
@@ -20,8 +20,10 @@ public class WorldSpawnPosComponent implements SpawnPosComponent {
         return this.value;
     }
 
+
+
     @Override
-    public void readFromNbt(CompoundTag compoundTag) {
+    public void readFromNbt(NbtCompound compoundTag) {
         // Read the keys passed on the CompoundTag to store them on the Map containing the world spawn positions
         // This is called when the component Nbt is read from file
         // It is used to set the spawn positions in memory
@@ -35,7 +37,7 @@ public class WorldSpawnPosComponent implements SpawnPosComponent {
     }
 
     @Override
-    public void writeToNbt(CompoundTag compoundTag) {
+    public void writeToNbt(NbtCompound compoundTag) {
         // Iterate through the list of entries in the Map containing the world spawn positions
         for (Map.Entry<String,BlockPos> entry : this.value.entrySet()) {
             // Get the spawn point for the given entry
